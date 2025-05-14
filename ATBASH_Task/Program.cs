@@ -1,15 +1,29 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace ATBASH_Task
 {
     internal class Program
     {
-        
-        
+
+        static string checkIfDangrues(string text, string[] words)
+        {
+            int count = 0;
+            string[] listOfText = Regex.Split(text, "[^a-zA-Z]+");
+            foreach (string word  in listOfText)
+            {
+                if (words.Contains(word))
+                {
+                    count++;
+                }
+            }
+            return $"level of danger: {count} points";
+        }
 
             Dictionary<char, char> atbashCipher = new Dictionary<char, char>
             {
