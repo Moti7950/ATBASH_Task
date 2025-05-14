@@ -1,4 +1,4 @@
 # ATBASH_Task
 Members 
-Dov zucker
-Moti Kopshitz
+1. Dov zucker
+2. Moti Kopshitz
