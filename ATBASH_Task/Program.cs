@@ -11,6 +11,7 @@ namespace ATBASH_Task
     internal class Program
     {
 
+
         static int checkIfDangrues(string text, string[] words)
         {
             int count = 0;
@@ -25,6 +26,11 @@ namespace ATBASH_Task
             return  count;
         }
 
+
+        //check if char is Not Uppercase!!
+        static string DecryptAtbadh(string input)
+        {
+
             Dictionary<char, char> atbashCipher = new Dictionary<char, char>
             {
                 {'A', 'Z'}, {'B', 'Y'}, {'C', 'X'}, {'D', 'W'}, {'E', 'V'},
@@ -35,12 +41,26 @@ namespace ATBASH_Task
                 {'Z', 'A'}
             };
 
-        
+            string dicript = "";
+            foreach (char c in input)
+            {
+                char ci = char.ToUpper(c);
+                if (atbashCipher.ContainsKey(ci))
+                {
+                    dicript += atbashCipher[ci].ToString();
+                }
+                else
+                {
+                    dicript += c;
+                }
+            }
+            return dicript;
+        }
 
         static void Main(string[] args)
         {
-            
-
+            string x = "Abckhd ndhdd";
+            Console.WriteLine(DecryptAtbadh(x));
 
         }
     }
