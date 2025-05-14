@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
+
 using System.Threading.Tasks;
 
 namespace ATBASH_Task
@@ -11,7 +11,7 @@ namespace ATBASH_Task
     internal class Program
     {
 
-        static string checkIfDangrues(string text, string[] words)
+        static int checkIfDangrues(string text, string[] words)
         {
             int count = 0;
             string[] listOfText = Regex.Split(text, "[^a-zA-Z]+");
@@ -22,7 +22,7 @@ namespace ATBASH_Task
                     count++;
                 }
             }
-            return $"level of danger: {count} points";
+            return  count;
         }
 
             Dictionary<char, char> atbashCipher = new Dictionary<char, char>
