@@ -10,6 +10,7 @@ namespace ATBASH_Task
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("hi");
         }
     }
 }
