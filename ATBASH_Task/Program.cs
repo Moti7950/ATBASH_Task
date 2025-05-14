@@ -8,7 +8,8 @@ namespace ATBASH_Task
 {
     internal class Program
     {
-        static void DecryptAtbadh(string input)
+        //check if char is Not Uppercase!!
+        static string DecryptAtbadh(string input)
         {
             Dictionary<char, char> atbashCipher = new Dictionary<char, char>
             {
@@ -20,29 +21,26 @@ namespace ATBASH_Task
                 {'Z', 'A'}
             };
 
-            List<string> dicript = new List<string>();
+            string dicript = "";
             foreach (char c in input)
             {
-                if (atbashCipher.ContainsKey(c))
+                char ci = char.ToUpper(c);
+                if (atbashCipher.ContainsKey(ci))
                 {
-                    dicript.Add(atbashCipher[c].ToString());
-                }
-                else if (char.IsWhiteSpace(c))
-                {
-                    dicript.Add(" ");
+                    dicript += atbashCipher[ci].ToString();
                 }
                 else
                 {
-                    Console.WriteLine("Not in ATBASH Dicti!");
+                    dicript += c;
                 }
-                    
             }
+            return dicript;
         }
 
         static void Main(string[] args)
         {
-            
-
+            string x = "Abckhd ndhdd";
+            Console.WriteLine(DecryptAtbadh(x));
 
         }
     }
