@@ -5,6 +5,8 @@ using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
+using System.Net.Sockets;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ATBASH_Task
 {
@@ -56,11 +58,34 @@ namespace ATBASH_Task
             }
             return dicript;
         }
+        static string displayWarning(string text, string[] words)
+        {
+            string decryptedText = DecryptAtbadh(text);
+            int count = checkIfDangrues(decryptedText, words);
+
+            string finalMessage = "";
+            if (count > 0 && count <= 5)
+            {
+                finalMessage += "WARNING";
+            }
+            else if (count > 5 && count <= 10)
+            {
+                finalMessage += "DANGER!";
+            }
+            else if (count > 10 && count <= 15)
+            {
+                finalMessage += "ULTRA ALERT";
+            }
+
+            return $"{decryptedText}  {"\n"}  {finalMessage} {count}";
+        }
+        
 
         static void Main(string[] args)
         {
-            string x = "Abckhd ndhdd";
-            Console.WriteLine(DecryptAtbadh(x));
+            string x = "Lfi ulixvh ziv kivkzirmt uli z nzqli zggzxp lm gsv Arlmrhg vmvnb.\r\nGsv ilxpvg fmrgh ziv ivzwb zmw dzrgrmt uli gsv hrtmzo.\r\nYlnyh szev yvvm kozxvw mvzi pvb olxzgrlmh.\r\nMfpsyz urtsgvih ziv hgzmwrmt yb uli tilfmw rmurogizgrlm.\r\nGsv zggzxp droo yv hfwwvm zmw hgilmt -- gsvb dlm’g hvv rg xlnrmt.\r\nDv nfhg hgzb srwwvm zmw pvvk gsv kozm hvxivg fmgro gsv ozhg nlnvmg.\r\nErxglib rh mvzi. Hgzb ivzwb.\r\n\r\n";
+            string[] y = { "BOMB", "NUKBA", "FIGHTER", "ROCKET", "SECRET" };
+            Console.WriteLine(displayWarning(x, y));
 
         }
     }
