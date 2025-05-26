@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 
 using System.Threading.Tasks;
+using System.IO;
 
 namespace ATBASH_Task
 {
@@ -12,56 +13,18 @@ namespace ATBASH_Task
     {
 
 
-        static int checkIfDangrues(string text, string[] words)
-        {
-            int count = 0;
-            string[] listOfText = Regex.Split(text, "[^a-zA-Z]+");
-            foreach (string word  in listOfText)
-            {
-                if (words.Contains(word))
-                {
-                    count++;
-                }
-            }
-            return  count;
-        }
-
-
-        //check if char is Not Uppercase!!
-        static string DecryptAtbadh(string input)
-        {
-
-            Dictionary<char, char> atbashCipher = new Dictionary<char, char>
-            {
-                {'A', 'Z'}, {'B', 'Y'}, {'C', 'X'}, {'D', 'W'}, {'E', 'V'},
-                {'F', 'U'}, {'G', 'T'}, {'H', 'S'}, {'I', 'R'}, {'J', 'Q'},
-                {'K', 'P'}, {'L', 'O'}, {'M', 'N'}, {'N', 'M'}, {'O', 'L'},
-                {'P', 'K'}, {'Q', 'J'}, {'R', 'I'}, {'S', 'H'}, {'T', 'G'},
-                {'U', 'F'}, {'V', 'E'}, {'W', 'D'}, {'X', 'C'}, {'Y', 'B'},
-                {'Z', 'A'}
-            };
-
-            string dicript = "";
-            foreach (char c in input)
-            {
-                char ci = char.ToUpper(c);
-                if (atbashCipher.ContainsKey(ci))
-                {
-                    dicript += atbashCipher[ci].ToString();
-                }
-                else
-                {
-                    dicript += c;
-                }
-            }
-            return dicript;
-        }
-
         static void Main(string[] args)
         {
-            string x = "Abckhd ndhdd";
-            Console.WriteLine(DecryptAtbadh(x));
-
+            Console.WriteLine("Please enter a message: ");
+            string message = Console.ReadLine().ToUpper();
+            Encreypte encreyptMessage = new Encreypte();
+            string encripyVerabl = encreyptMessage.DecryptAtbadh(message);
+            File.WriteAllText("C:\\Users\\User\\OneDrive - SaharPro\\שולחן העבודה\\לימודים\\הכשרה מודעין 😁\\visual_P\\ATBASH_Task\\ATBASH_Task\\File_VS\\s.txt", encripyVerabl);
+            Console.WriteLine(encripyVerabl);
+            Encreypte DecreyptMessage = new Encreypte();
+            string decryptVerbel = DecreyptMessage.DecryptAtbadh(File.ReadAllText("C:\\Users\\User\\OneDrive - SaharPro\\שולחן העבודה\\לימודים\\הכשרה מודעין 😁\\visual_P\\ATBASH_Task\\ATBASH_Task\\File_VS\\s.txt"));
+            Console.WriteLine(decryptVerbel + " Done");
+        
         }
     }
 }
